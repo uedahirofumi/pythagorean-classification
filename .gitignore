@@ -1,0 +1,17 @@
+# Temporary/system files
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+~$*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Secrets
+.env
+.env.*
+*.key
