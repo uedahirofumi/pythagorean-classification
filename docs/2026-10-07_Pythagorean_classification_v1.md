@@ -2,20 +2,36 @@
 
 ## 1. Problem
 
-Study functions F:N→C such that
+Study functions
 
-1. F(mn)=F(m)F(n) for all positive integers m,n;
-2. F(1)=1;
-3. for every primitive Pythagorean triple a^2+b^2=c^2,
+\[
+F:\mathbb N\to\mathbb C
+\]
+
+such that
+
+1. \(F(mn)=F(m)F(n)\) for all positive integers \(m,n\);
+2. \(F(1)=1\);
+3. for every primitive Pythagorean triple
+   \[
+   a^2+b^2=c^2,
+   \qquad \gcd(a,b,c)=1,
+   \]
+   one has
+   \[
    F(a)+F(b)=F(c).
+   \]
 
-The project arose from the separate physics question of whether a quadratic weight can be forced by additive, multiplicative, and Pythagorean-type consistency. The number theory below stands independently of that motivation.
+The goal is to classify all such completely multiplicative functions.
 
 ## 2. Main theorem — proved
 
-If F(2) and F(3) are not simultaneously zero, then F is exactly one of 13 possibilities:
+If \(F(2)\) and \(F(3)\) are not simultaneously zero, then \(F\) is exactly one of 13 possibilities:
 
-- the square function F(n)=n^2;
+- the square function
+  \[
+  F(n)=n^2;
+  \]
 - 12 Dirichlet-character solutions.
 
 Hence the nondegenerate branch is completely classified.
@@ -25,7 +41,7 @@ Hence the nondegenerate branch is completely classified.
 | Modulus | Character type | Number | Prime where it vanishes |
 |---:|---|---:|---:|
 | 2 | principal character | 1 | 2 |
-| 8 | Kronecker (2/·) | 1 | 2 |
+| 8 | Kronecker \((2/\cdot)\) | 1 | 2 |
 | 3 | principal character | 1 | 3 |
 | 9 | cubic characters | 2 | 3 |
 | 5 | Legendre character | 1 | 5 |
@@ -34,164 +50,219 @@ Hence the nondegenerate branch is completely classified.
 
 Total: 12.
 
-Each was verified exactly by exhaustive residue-class checking and proved to satisfy the Pythagorean functional equation globally.
+Each of these 12 candidates was checked exactly by exhaustive residue-class analysis and proved to satisfy
 
-Controls that fail:
-- chi_{-4};
-- principal character mod 5;
-- quartic characters mod 5.
+\[
+F(a)+F(b)=F(c)
+\]
+
+for every primitive Pythagorean triple.
+
+The following comparison candidates fail:
+
+- \(\chi_{-4}\);
+- the principal character modulo \(5\);
+- quartic characters modulo \(5\).
 
 ## 4. Finite base classification
 
-The equations from primitive Pythagorean triples with c<=85 were solved over C using a division-free Gröbner-basis computation.
+The equations arising from primitive Pythagorean triples with
 
-Result:
-- 13 nondegenerate pairs (F(2),F(3));
-- one degenerate branch F(2)=F(3)=0.
+\[
+c\le 85
+\]
 
-The 13 nondegenerate branches are exactly the square function plus the 12 characters above.
+were solved over \(\mathbb C\) using a division-free Gröbner-basis computation.
 
-The earlier approximate real branch near F(2)≈1.185 is eliminated by the full finite system; in particular the relation from (36,77,85) removes it.
+The solution set consists of:
+
+- 13 nondegenerate pairs \((F(2),F(3))\);
+- one degenerate branch
+  \[
+  F(2)=F(3)=0.
+  \]
+
+The 13 nondegenerate branches are exactly the square function plus the 12 Dirichlet characters listed above.
+
+A previously observed approximate real branch near
+
+\[
+F(2)\approx1.185
+\]
+
+does not survive the full system. In particular, the equation arising from
+
+\[
+(36,77,85)
+\]
+
+eliminates it.
 
 ## 5. Global uniqueness / propagation
 
-The positive-real induction was re-examined. The propagation argument only needs division by F(1) and F(7).
+The induction used to propagate the finite base to all positive integers only requires division by \(F(1)\) and \(F(7)\).
 
-For all 13 nondegenerate branches, F(7) != 0.
+For all 13 nondegenerate branches,
 
-Therefore each admissible pair (F(2),F(3)) propagates uniquely to all n. No additional nondegenerate branches can appear at larger integers.
+\[
+F(7)\neq0.
+\]
+
+Therefore every admissible pair \((F(2),F(3))\) determines the function uniquely on all of \(\mathbb N\). No additional nondegenerate branches can appear beyond the finite base.
 
 ## 6. Rigidity corollary
 
-Every one of the 12 character exceptions vanishes at one of the primes 2,3,5,13.
+Every one of the 12 Dirichlet-character exceptions vanishes at at least one of the primes
 
-Therefore
+\[
+2,3,5,13.
+\]
 
-F(2)F(3)F(5)F(13) != 0
+Therefore:
 
-implies
+### Corollary
 
-F(n)=n^2  for all n.
+If
 
-The earlier positive-real theorem is a special case.
+\[
+F(2)F(3)F(5)F(13)\neq0,
+\]
+
+then
+
+\[
+\boxed{F(n)=n^2\quad\text{for every }n\in\mathbb N.}
+\]
+
+The positive-real case is a special case of this corollary.
 
 ## 7. Degenerate branch — unresolved globally
 
-Assume F(2)=F(3)=0.
+Assume
 
-Then F(5)=F(7)=0 is also forced.
+\[
+F(2)=F(3)=0.
+\]
+
+Then the Pythagorean relations also force
+
+\[
+F(5)=F(7)=0.
+\]
 
 A trivial solution exists:
-- F(1)=1;
-- F(n)=0 for n>1.
 
-It is not yet proved that this is the only degenerate solution.
+\[
+F(1)=1,
+\qquad
+F(n)=0\quad(n>1).
+\]
 
-If a nontrivial degenerate solution exists and p0 is the smallest prime with F(p0) != 0, necessary conditions include:
+It is not yet proved that this is the only solution in the degenerate branch.
 
-- p0 ≡ 3 (mod 4);
-- (p0^2+1)/2 is prime;
+Suppose a nontrivial degenerate solution exists, and let \(p_0\) be the smallest prime satisfying
+
+\[
+F(p_0)\neq0.
+\]
+
+Necessary conditions derived so far include:
+
+- \(p_0\equiv3\pmod4\);
+- \((p_0^2+1)/2\) is prime;
 - with
-  alpha=((p0+1)+(p0-1)i)/2,
-  Re(alpha^(2k)) is not divisible by any prime below p0 for the relevant positive integers k.
+  \[
+  \alpha=\frac{(p_0+1)+(p_0-1)i}{2},
+  \]
+  the values \(\operatorname{Re}(\alpha^{2k})\) avoid divisibility by primes below \(p_0\) for the relevant positive integers \(k\).
 
-A search found no such p0<10^6.
+A computational search found no such \(p_0<10^6\).
 
-There were 3543 preliminary candidates; all were eliminated using primes <=31.
+There were 3543 preliminary candidates, and every one was eliminated using primes at most \(31\).
 
 This is finite computational evidence, not a global proof.
 
-## 8. Historical dead end
+## 8. Earlier proof route and its replacement
 
 An earlier route used the standard triple
 
-(p, (p^2-1)/2, (p^2+1)/2)
+\[
+\left(p,\frac{p^2-1}{2},\frac{p^2+1}{2}\right)
+\]
 
-for p≡3 mod4 and generated upward dependencies such as (11,60,61). A ν2-descent idea did not fully prove well-foundedness because downward moves could reset the measure.
+for primes \(p\equiv3\pmod4\). This can generate upward dependencies such as
 
-That route is no longer part of the proof.
+\[
+(11,60,61),
+\]
 
-The successful induction instead chooses a small auxiliary odd d so that a constructed Pythagorean triple has a controlled composite hypotenuse; this removes the dependency-graph problem.
+leading to a dependency-graph / well-foundedness problem.
 
-## 9. Physics interpretation — safe statement only
+A \(\nu_2\)-descent idea did not completely exclude infinite zig-zag chains and is not part of the final proof.
 
-The intended physical bridge is:
+The successful induction instead chooses a small auxiliary odd parameter so that the constructed Pythagorean triple has a controlled composite hypotenuse. This removes the dependency-graph problem.
 
-additivity of distinguishable alternatives
-+ multiplicativity of serial/independent composition
-+ reversible Pythagorean mixing
-+ nonnegative/nonvanishing physical weight
-=> quadratic rigidity.
+## 9. Publication structure
 
-Safe claim:
+The nondegenerate complex-valued classification is a self-contained number-theoretic result.
 
-Under explicit composition and nonvanishing assumptions, exponent 2 is rigid.
+A neutral title is:
 
-Unsafe current claim:
+**Completely Multiplicative Functions Additive on Primitive Pythagorean Triples**
 
-“The Born rule has been derived from first principles.”
+A natural paper structure is:
 
-Still to audit:
-1. whether the weight is assumed to depend only on component magnitude;
-2. whether rational/Pythagorean rotations are physically realizable reversible transformations;
-3. whether additive probability structure is being assumed rather than derived;
-4. whether multiplicative composition imports too much;
-5. why physical refinement should exclude zero weights.
-
-## 10. Information-geometric connection
-
-Candidate larger chain:
-
-distinguishability
-→ information geometry
-→ orthogonality / reversible mixing
-→ Pythagorean rigidity
-→ quadratic weight.
-
-The theorem may fill the earlier “why quadratic?” gap.
-
-It does not yet explain:
-- why quantum amplitudes are complex;
-- why a single outcome occurs in one measurement.
-
-## 11. Publication status
-
-The nondegenerate complex-valued classification is already a coherent theorem suitable for a number-theory paper.
-
-Possible title:
-
-Completely Multiplicative Functions Additive on Primitive Pythagorean Triples
-
-Suggested structure:
-1. definitions and main theorem;
+1. definitions and main classification theorem;
 2. finite Gröbner-basis classification;
-3. exact identification of the 12 characters;
-4. propagation/uniqueness;
+3. exact identification of the 12 Dirichlet characters;
+4. propagation / uniqueness theorem;
 5. nonvanishing corollary;
 6. degenerate branch and computational obstruction;
 7. open problems.
 
-Before a novelty claim, perform a final MathSciNet/zbMATH literature audit.
+Before making a novelty claim, a final MathSciNet/zbMATH literature audit is required.
 
-## 12. Canonical status at 2026-10-07
+## 10. Canonical status at 2026-10-07
 
-PROVED:
-- nondegenerate complex-valued classification;
+### PROVED
+
+- exact finite nondegenerate base classification over \(\mathbb C\);
 - exactly 13 nondegenerate branches;
-- 12 character exceptions;
-- global uniqueness/propagation;
-- F(2)F(3)F(5)F(13)!=0 => F(n)=n^2.
+- exactly 12 non-square Dirichlet-character branches;
+- exact global verification of those 12 characters;
+- global propagation / uniqueness in the nondegenerate case;
+- full nondegenerate classification theorem;
+- the corollary
+  \[
+  F(2)F(3)F(5)F(13)\neq0
+  \Longrightarrow
+  F(n)=n^2.
+  \]
 
-COMPUTATIONALLY VERIFIED ONLY:
-- no nontrivial degenerate minimal prime p0<10^6.
+### COMPUTATIONALLY VERIFIED, NOT A GLOBAL PROOF
 
-OPEN:
-- complete degenerate-branch classification;
-- physical audit of the Born-rule bridge;
-- origin of complex amplitudes;
-- single-outcome measurement problem.
+- no nontrivial degenerate minimal prime \(p_0<10^6\);
+- 3543 preliminary candidates all eliminated by primes \(\le31\).
 
-Canonical conclusion:
+### OPEN
 
-The nondegenerate complex-valued classification is complete.
-Only the fully degenerate zero branch remains globally unresolved.
+- complete classification of the branch
+  \[
+  F(2)=F(3)=0;
+  \]
+- proof that the trivial zero-after-1 function is the only degenerate solution;
+- final literature audit for novelty and overlap.
+
+## 11. Canonical conclusion
+
+\[
+\boxed{\text{The nondegenerate complex-valued classification is complete.}}
+\]
+
+\[
+\boxed{F(2)F(3)F(5)F(13)\neq0\Longrightarrow F(n)=n^2.}
+\]
+
+\[
+\boxed{\text{Only the fully degenerate branch remains globally unresolved.}}
+\]
